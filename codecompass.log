@@ -1,0 +1,19 @@
+2025-08-19 19:39:07,149 - __main__ - INFO - Starting Code Compass application
+2025-08-19 19:39:10,555 - __main__ - ERROR - Failed to import required modules: No module named 'sentence_transformers'
+2025-08-19 19:39:10,556 - __main__ - ERROR - Make sure all dependencies are installed: pip install -r requirements.txt
+2025-08-19 19:43:50,510 - __main__ - INFO - Starting Code Compass application
+2025-08-19 19:44:21,411 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-08-19 19:44:21,412 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-19 19:44:23,089 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2025-08-19 19:44:34,176 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-08-19 19:44:34,177 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-19 19:46:43,315 - __main__ - INFO - Starting Code Compass application
+2025-08-19 19:46:50,860 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-08-19 19:46:50,861 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-19 19:46:52,900 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-08-19 19:46:52,900 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-19 19:56:01,963 - __main__ - INFO - Starting Code Compass application
+2025-08-19 19:56:09,405 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-08-19 19:56:09,405 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-08-19 19:56:11,581 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-08-19 19:56:11,581 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
