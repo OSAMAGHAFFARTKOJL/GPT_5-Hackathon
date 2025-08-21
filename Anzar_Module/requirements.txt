@@ -1,0 +1,9 @@
+streamlit>=1.28.0
+networkx>=3.0
+pyvis>=0.3.2
+GitPython>=3.1.40
+pathlib
+streamlit
+gitpython
+networkx
+pyvis
