@@ -9,11 +9,14 @@ from pathlib import Path
 def main():
     """Run the Streamlit application"""
     # Add src directory to Python path
-    src_path = Path(__file__).parent / "src"
+    # src_path = Path(__file__).parent / "src"
+    src_path = Path(__file__).parent / "Anzar_Module"
     os.environ["PYTHONPATH"] = str(src_path)
     
     # Run Streamlit app
-    streamlit_file = src_path / "ui" / "streamlit_app.py"
+    streamlit_file = src_path / "app.py"
+    # streamlit_file = src_path / "ui" / "str"
+    # "eamlit_app.py"
     
     if not streamlit_file.exists():
         print(f"Error: Streamlit app not found at {streamlit_file}")
@@ -28,7 +31,8 @@ def main():
             sys.executable, "-m", "streamlit", "run", 
             str(streamlit_file),
             "--server.port=8501",
-            "--server.address=0.0.0.0"
+            # "--server.address=0.0.0.0"
+              "--server.address=localhost"  # Changed from 0.0.0.0 to localhost
         ])
     except KeyboardInterrupt:
         print("\nShutting down Streamlit app...")

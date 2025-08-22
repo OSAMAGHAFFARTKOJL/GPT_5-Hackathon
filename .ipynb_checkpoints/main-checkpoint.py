@@ -1,11 +1,6 @@
 """
 Main entry point for Code Compass application
 """
-#  Load environment variables from .env file
-from dotenv import load_dotenv
-load_dotenv()
-
-
 import os
 import sys
 import logging

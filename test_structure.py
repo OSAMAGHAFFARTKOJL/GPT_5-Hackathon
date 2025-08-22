@@ -46,6 +46,8 @@ def test_project_structure():
         "src/data/__init__.py",
         "src/data/knowledge_graph.py",
         "src/data/vector_store.py",
+        # JUST ADDED THIS
+        "src/data/pg_vector_store.py",
         "src/ui/__init__.py",
         "src/ui/streamlit_app.py",
         "src/utils/__init__.py",

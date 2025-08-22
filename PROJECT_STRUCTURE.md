@@ -1,6 +1,7 @@
 # Code Compass - Project Structure
 
 ## Overview
+
 This document describes the complete project structure for Code Compass, an AI-powered tool to help students explore and contribute to open-source GitHub repositories.
 
 ## Directory Structure
@@ -49,22 +50,26 @@ E:\GitRepos\GPT_5-Hackathon\
 ## Key Components
 
 ### 1. Multi-Agent System
+
 - **Mapper Agent**: Clones repositories, parses code structure, builds knowledge graphs
-- **Navigator Agent**: Handles natural language queries, searches code semantically  
+- **Navigator Agent**: Handles natural language queries, searches code semantically
 - **Analyst Agent**: Detects code smells, predicts bug-prone areas, suggests contributions
 - **Orchestrator**: Manages agent workflows and shared state
 
 ### 2. API Layer
+
 - **FastAPI Server**: RESTful endpoints (`/map-repo`, `/query`, `/analyze`)
 - **Request Models**: Pydantic schemas for API validation
 - **Error Handling**: Comprehensive error responses
 
-### 3. Data Layer  
+### 3. Data Layer
+
 - **Knowledge Graph**: NetworkX-based directed graph of code structure
 - **Vector Store**: Semantic embeddings for code search using sentence-transformers
 - **GitHub Integration**: Repository cloning, issue fetching, API interactions
 
 ### 4. User Interface
+
 - **Streamlit App**: Interactive web interface with three main features:
   - Repository mapping and visualization
   - Natural language code queries
@@ -73,40 +78,47 @@ E:\GitRepos\GPT_5-Hackathon\
 ## Technology Stack
 
 ### Backend
+
 - **FastAPI**: High-performance REST API framework
 - **Python 3.8+**: Core programming language
 - **NetworkX**: Graph processing and analysis
 - **GitPython**: Git repository operations
 
 ### AI/ML
+
 - **Sentence Transformers**: Semantic embeddings (all-MiniLM-L6-v2)
 - **scikit-learn**: Machine learning for bug prediction
 - **Tree-sitter**: Code parsing and AST generation
 - **Pylint**: Static code analysis
 
 ### Frontend
+
 - **Streamlit**: Interactive web application framework
 - **Plotly**: Interactive graph visualizations
 - **Pandas**: Data manipulation and display
 
 ### External APIs
+
 - **GitHub API**: Repository data, issues, commits
 - **github3.py**: Python GitHub API client
 
 ## Installation & Setup
 
 1. **Clone the repository:**
+
    ```bash
    git clone <repository-url>
    cd GPT_5-Hackathon
    ```
 
 2. **Install dependencies:**
+
    ```bash
    pip install -r requirements.txt
    ```
 
 3. **Configure environment (optional):**
+
    ```bash
    cp .env.example .env
    # Edit .env with your GitHub token and preferences
@@ -120,6 +132,7 @@ E:\GitRepos\GPT_5-Hackathon\
 ## Running the Application
 
 ### Option 1: API Server + UI Separately
+
 ```bash
 # Terminal 1: Start API server
 python main.py
@@ -129,6 +142,7 @@ python run_streamlit.py
 ```
 
 ### Option 2: Package Installation
+
 ```bash
 pip install -e .
 codecompass-api  # Start API server
@@ -145,6 +159,7 @@ codecompass-ui   # Start UI
 ## Usage Examples
 
 ### 1. Map a Repository
+
 ```json
 POST /map-repo
 {
@@ -154,15 +169,17 @@ POST /map-repo
 ```
 
 ### 2. Query Codebase
+
 ```json
 POST /query
 {
-  "repo_url": "https://github.com/user/repo", 
+  "repo_url": "https://github.com/user/repo",
   "query": "How does authentication work in this project?"
 }
 ```
 
 ### 3. Analyze Code
+
 ```json
 POST /analyze
 {
@@ -173,7 +190,7 @@ POST /analyze
 ## Development Workflow
 
 1. **Phase 1**: Basic repository mapping and graph visualization
-2. **Phase 2**: Natural language queries and issue suggestions  
+2. **Phase 2**: Natural language queries and issue suggestions
 3. **Phase 3**: Code analysis and contribution recommendations
 4. **Future**: Multi-language support, voice input, PR generation
 
@@ -188,6 +205,7 @@ POST /analyze
 ## Testing & Validation
 
 The project includes comprehensive structure validation:
+
 - **Directory Structure**: Validates all required folders exist
 - **File Structure**: Ensures all core files are present
 - **Import Testing**: Tests Python module imports (without heavy dependencies)
