@@ -1,0 +1,13 @@
+requests
+networkx
+matplotlib
+plotly
+pygithub
+pyvis
+groq
+pandas
+langchain
+langchain-community
+langchain-google-genai
+google-generativeai
+streamlit
