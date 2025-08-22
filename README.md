@@ -16,32 +16,8 @@ A powerful Streamlit application that helps developers understand, visualize, an
 
 The project is organized into modular components for maintainability and scalability:
 
-```
-open_source_helper/
-├── main.py                     # Main application entry point
-├── config/
-│   └── settings.py            # Configuration and constants
-├── core/
-│   ├── dependency_analyzer.py  # Main orchestrator
-│   ├── repository_manager.py   # Repository operations
-│   └── vectorstore_manager.py  # Vector store management
-├── extractors/
-│   ├── base_extractor.py      # Base extractor class
-│   ├── python_extractor.py    # Python dependency extraction
-│   └── javascript_extractor.py # JS/TS dependency extraction
-├── ai/
-│   ├── groq_client.py         # AI client wrapper
-│   └── qa_system.py           # Question-answering system
-├── visualization/
-│   ├── graph_builder.py       # Graph creation
-│   └── network_visualizer.py  # Interactive visualization
-├── utils/
-│   └── session_manager.py     # Session state management
-└── components/
-    ├── sidebar.py             # UI components
-    ├── main_content.py        # Main content areas
-    └── qa_interface.py        # Q&A interface
-```
+<img width="1076" height="3840" alt="Untitled diagram _ Mermaid Chart-2025-08-22-095901" src="https://github.com/user-attachments/assets/1340a725-7126-4031-b796-7acc0b4e81fc" />
+
 
 ## 🚀 Quick Start
 
