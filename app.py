@@ -23,10 +23,11 @@ import google.generativeai as genai
 from typing import List
 
 # Set page configuration
-st.set_page_config(page_title="Open-Source Contribution Helper", layout="wide")
+st.set_page_config(page_title="Code Compass", layout="wide")
 
 # App title and description
-st.title("🔗 Open-Source Contribution Helper")
+st.title("🔗 Code Compass")
+st.markdown("Open-Source Contribution Helper")
 st.markdown("Understand, visualize, and contribute to GitHub repositories easily. Analyze dependencies, get AI explanations, find contribution opportunities, and ask questions.")
 
 # Initialize session state
