@@ -12,3 +12,4 @@ langchain-google-genai
 google-generativeai
 streamlit
 faiss-cpu
+openai
