@@ -1,4 +1,4 @@
-![Untitled diagram _ Mermaid Chart-2025-08-23-062842](https://github.com/user-attachments/assets/09e8d3c4-c095-49e5-9dd8-5513bc41bed5)# 🔗 Code Compass
+# 🔗 Code Compass
 
 **Open-Source Contribution Helper**
 
@@ -31,7 +31,7 @@ Code Compass is an intelligent tool that helps developers understand, visualize,
 - **Interactive Interface**: User-friendly Streamlit-based web application
 
 
-<svg id="export-svg" width="100%" xmlns="http://www.w3.org/2000/svg" class="flowchart" style="max-width: 866.3656616210938px;" viewBox="0 0 866.3656616210938 3277.487548828125" role="graphics-document document" aria-roledescription="flowchart-v2">
+![Untitled diagram _ Mermaid Chart-2025-08-23-062842](https://github.com/user-attachments/assets/09e8d3c4-c095-49e5-9dd8-5513bc41bed5)
 
 ## 🛠️ Installation
 
@@ -254,23 +254,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Discussions**: [GitHub Discussions](https://github.com/yourusername/code-compass/discussions)
 - **Documentation**: This README and inline code comments
 
-## 🗺️ Roadmap
-
-### Upcoming Features
-- [ ] Support for more programming languages
-- [ ] Integration with GitLab and Bitbucket
-- [ ] Advanced contribution scoring
-- [ ] Team collaboration features
-- [ ] API for programmatic access
-- [ ] Docker containerization
-- [ ] CI/CD pipeline integration
-
-### Version History
-- **v1.0.0**: Initial release with GPT-5 integration
-- **v0.9.0**: Beta version with Groq integration
-- **v0.8.0**: Alpha version with basic analysis
-
----
 
 **Made with ❤️ for the open-source community**
 
