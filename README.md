@@ -17,7 +17,8 @@ Open-Source Contribution Helper - Understand, visualize, and contribute to GitHu
 - AIML API Key (for GPT-5 powered analysis)
 - Google API Key (for embeddings and RAG)
 - GitHub Token (optional, for higher rate limits)
-#Check the dmeo here: https://gpt5-hackathon.streamlit.app/
+-
+- #Check the dmeo here: https://gpt5-hackathon.streamlit.app/
 
 
 ![Untitled diagram _ Mermaid Chart-2025-08-23-062842](https://github.com/user-attachments/assets/09e8d3c4-c095-49e5-9dd8-5513bc41bed5)
