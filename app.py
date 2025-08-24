@@ -13,7 +13,7 @@ import re
 from collections import defaultdict
 from urllib.parse import urlparse, urljoin
 import ast
-from groq import Groq
+from openai import OpenAI
 import pandas as pd
 import tempfile, subprocess, glob, shutil
 from langchain.docstore.document import Document
@@ -59,7 +59,7 @@ with st.sidebar:
     st.header("⚙️ Configuration")
     repo_url = st.text_input("GitHub Repository URL", placeholder="https://github.com/username/repository")
     github_token = st.text_input("GitHub Token (Optional)", type="password", help="For higher rate limits")
-    groq_api_key = st.text_input("GPT-5 API Key", type="password", help="For AI-powered analysis and Q&A")
+    aiml_api_key = st.text_input("AIML API Key", type="password", help="For GPT-5 powered analysis and Q&A")
     google_api_key = st.text_input("Google API Key", type="password", help="For embeddings (required for RAG)")
     
     st.header("🎨 Visualization Options")
@@ -76,13 +76,16 @@ with st.sidebar:
 INDEX_DIR = "faiss_index"
 
 class AdvancedDependencyAnalyzer:
-    def __init__(self, groq_api_key=None, google_api_key=None):
-        self.groq_client = None
-        if groq_api_key:
+    def __init__(self, aiml_api_key=None, google_api_key=None):
+        self.openai_client = None
+        if aiml_api_key:
             try:
-                self.groq_client = Groq(api_key=groq_api_key)
+                self.openai_client = OpenAI(
+                    base_url='https://api.aimlapi.com/v1',
+                    api_key=aiml_api_key
+                )
             except:
-                st.warning("Invalid Groq API key")
+                st.warning("Invalid AIML API key")
         
         if google_api_key:
             genai.configure(api_key=google_api_key)
@@ -189,8 +192,8 @@ class AdvancedDependencyAnalyzer:
         return True
     
     def generate_contribution_report(self):
-        if not self.groq_client:
-            return "Groq API key required for contribution report."
+        if not self.openai_client:
+            return "AIML API key required for contribution report."
         
         if not os.path.exists(INDEX_DIR):
             return "Vector store not found. Please analyze the repository first."
@@ -222,48 +225,48 @@ Analyze the repository and suggest:
 Context:
 {context}
 """
-        response = self.groq_client.chat.completions.create(
+        response = self.openai_client.chat.completions.create(
             messages=[{"role": "user", "content": prompt}],
-            model="openai/gpt-oss-20b",
+            model="openai/gpt-5-2025-08-07",
             temperature=0.1
         )
         return response.choices[0].message.content
     
     def summarize_repo(self, contribution_report):
-        if not self.groq_client:
-            return "Groq API key required for repo summary."
+        if not self.openai_client:
+            return "AIML API key required for repo summary."
         
         prompt = f"""
 Summarize the overall working of the repository in a few paragraphs. Focus on purpose, main components, and how it works.
 Based on this contribution report:
 {contribution_report}
 """
-        response = self.groq_client.chat.completions.create(
+        response = self.openai_client.chat.completions.create(
             messages=[{"role": "user", "content": prompt}],
-            model="openai/gpt-oss-20b",
+            model="openai/gpt-5-2025-08-07",
             temperature=0.1
         )
         return response.choices[0].message.content
     
     def summarize_file(self, file_path, content):
-        if not self.groq_client:
-            return "Groq API key required for file summary."
+        if not self.openai_client:
+            return "AIML API key required for file summary."
         
         prompt = f"""
 Summarize the working of this file in a few words (1-2 sentences max). Focus on its purpose and key functions.
 File: {file_path}
 Content (snippet): {content[:1000]}...
 """
-        response = self.groq_client.chat.completions.create(
+        response = self.openai_client.chat.completions.create(
             messages=[{"role": "user", "content": prompt}],
-            model="openai/gpt-oss-20b",
+            model="openai/gpt-5-2025-08-07",
             temperature=0.1
         )
         return response.choices[0].message.content
     
     def answer_question(self, question):
-        if not self.groq_client:
-            return "Groq API key required for Q&A."
+        if not self.openai_client:
+            return "AIML API key required for Q&A."
         
         if not self.embedding_model:
             return "Google API key required for embeddings in Q&A."
@@ -313,9 +316,9 @@ Instructions:
 - If the context doesn't fully answer the question, mention what's missing
 """
             
-            response = self.groq_client.chat.completions.create(
+            response = self.openai_client.chat.completions.create(
                 messages=[{"role": "user", "content": prompt}],
-                model="openai/gpt-oss-20b",
+                model="openai/gpt-5-2025-08-07",
                 temperature=0.3
             )
             
@@ -454,7 +457,7 @@ Instructions:
         return dependencies
     
     def analyze_dependencies_with_ai(self, content, file_path):
-        if not self.groq_client:
+        if not self.openai_client:
             return {}
         
         try:
@@ -476,9 +479,9 @@ Instructions:
             }}
             """
             
-            response = self.groq_client.chat.completions.create(
+            response = self.openai_client.chat.completions.create(
                 messages=[{"role": "user", "content": prompt}],
-                model="openai/gpt-oss-20b",
+                model="openai/gpt-5-2025-08-07",
                 temperature=0.1
             )
             
@@ -542,7 +545,7 @@ Instructions:
             
             if file_ext == ".py" and content:
                 deps = self.extract_python_dependencies(content, file_path)
-                if self.groq_client:
+                if self.openai_client:
                     ai_deps = self.analyze_dependencies_with_ai(content, file_path)
                     if ai_deps:  # Only merge if AI analysis succeeded
                         ai_analysis_stats["success"] += 1
@@ -556,7 +559,7 @@ Instructions:
             
             elif file_ext in [".js", ".ts", ".jsx", ".tsx"] and content:
                 deps = self.extract_javascript_dependencies(content, file_path)
-                if self.groq_client:
+                if self.openai_client:
                     ai_deps = self.analyze_dependencies_with_ai(content, file_path)
                     if ai_deps:
                         ai_analysis_stats["success"] += 1
@@ -576,7 +579,7 @@ Instructions:
                 file_dependencies[file_path] = deps
         
         # Show AI analysis summary instead of individual warnings
-        if self.groq_client and (ai_analysis_stats["success"] + ai_analysis_stats["failed"]) > 0:
+        if self.openai_client and (ai_analysis_stats["success"] + ai_analysis_stats["failed"]) > 0:
             total = ai_analysis_stats["success"] + ai_analysis_stats["failed"]
             success_rate = (ai_analysis_stats["success"] / total) * 100
             
@@ -805,7 +808,7 @@ if analyze_button and repo_url:
     # Reset analysis state
     st.session_state.repo_analyzed = False
     
-    analyzer = AdvancedDependencyAnalyzer(groq_api_key, google_api_key)
+    analyzer = AdvancedDependencyAnalyzer(aiml_api_key, google_api_key)
     st.session_state.analyzer = analyzer
     
     username, repo_name = analyzer.extract_repo_info(repo_url)
